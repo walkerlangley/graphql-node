@@ -1,0 +1,29 @@
+{
+  "name": "graphql-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/walkerlangley/graphql-node.git"
+  },
+  "author": "Walker Langley",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/walkerlangley/graphql-node/issues"
+  },
+  "homepage": "https://github.com/walkerlangley/graphql-node#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "express-graphql": "^0.6.1",
+    "graphql": "^0.8.2",
+    "graphql-relay": "^0.4.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
