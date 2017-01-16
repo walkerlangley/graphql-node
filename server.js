@@ -97,6 +97,18 @@ const { connectionType: VideoConnection } = connectionDefinitions({
   }),
 });
 
+const { connectionType: BookConnection } = connectionDefinitions({
+  nodeType: bookType,
+  connectionFields: () => ({
+    totalCount: {
+      type: GraphQLInt,
+      description: 'A count of the total number of objects in this connection.',
+      resolve: (conn) => {
+        return conn.edges.length;
+      },
+    },
+  }),
+});
 
 const queryType = new GraphQLObjectType({
   name: 'QueryType',
@@ -124,16 +136,12 @@ const queryType = new GraphQLObjectType({
       },
     },
     books: {
-      type: bookType,
-      args: {
-        id: {
-          type: new GraphQLNonNull(GraphQLID),
-          description: 'The id of the book.',
-        },
-      },
-      resolve: (_, args) => {
-        return getBookById(args.id);
-      },
+      type: BookConnection,
+      args: connectionArgs,
+      resolve: (_, args) => connectionFromPromisedArray(
+        getBooks(),
+        args
+      ),
     },
   }
 });
