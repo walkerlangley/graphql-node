@@ -7,3 +7,17 @@
 `yarn` to install dependencies  
 `npm start` to fire up the server  
 Head to [localhost:4000/graphql](localhost:4000/graphql) to test some queries
+
+#### Example queries
+```
+# Query the titles of all the videos
+{
+  videos {
+    edges {
+      node {
+        title
+      }
+    }
+  }
+}
+```
